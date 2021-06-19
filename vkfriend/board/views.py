@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from time import sleep
+from time import sleep, gmtime
 from .finder import VK
 
 def index(request):
     args = []
+    tm = gmtime()
     if request.GET:
         auth = [request.GET['login'], request.GET['paassword']]
         for l in request.GET.getlist('link'):
@@ -24,7 +25,9 @@ def index(request):
                         break
                     except:
                         sleep(1)
-            return render(request, "index.html", {"fnd": friend})
+
+            tm_search = [f'{abs(gmtime().tm_hour-tm.tm_hour)}:{abs(gmtime().tm_min-tm.tm_min)}:{abs(gmtime().tm_sec-tm.tm_sec)}']
+            return render(request, "index.html", {"fnd": friend, 'time':tm_search})
 
 
     return render(request, "index.html", {})

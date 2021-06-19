@@ -12,6 +12,9 @@
                 <img src="{{f.img}}" width="70px"/><a href="https://vk.com/id{{f.id}}" target="_blank">{{f.name}}</a></p>
             </div>
         {% endfor %}
+        {% for t in time %}
+            <h1>Время затрачено: {{t}}</h1>
+        {% endfor %}
     </div>
     <form method="get">
         <h1>Заполните форму</h1><input type="submit"/><br>
