@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>VkFriend</title>
+</head>
+<body>
+    <div ='form'>
+        <h1>Нашлись:</h1>
+        {% for f in fnd %}
+            <div class="bordered">
+                <img src="{{f.img}}" width="70px"/><a href="https://vk.com/id{{f.id}}" target="_blank">{{f.name}}</a></p>
+            </div>
+        {% endfor %}
+    </div>
+    <form method="get">
+        <h1>Заполните форму</h1><input type="submit"/><br>
+        <input name="login" type="text" placeholder="login" required/><br>
+        <input name="paassword" type="password" placeholder="password" required/><br>
+        <input id="link" name="link" type="text" placeholder="id" required/><br>
+        <input id="link" name="link" type="text" placeholder="id" required/><br>
+        <br><br>
+    </form>
+    <div class="form">
+        <button onclick="add()">Добавить человека</button><br><br>
+    </div>
+</body>
+<style>
+    body{background: rgba(52, 189, 235,1);}
+    form{width: 60%; position: absolute; border-radius: 15px; left: 30%;top: 50px ;text-align: center; background: rgba(52, 113, 235, 1)}
+    form input{width: max-content; font-size: 120%; margin-top: 10px  }
+    form button{width: max-content; font-size: 120%; margin-top: 10px  }
+
+    .bordered{border: 1px solid black; border-radius: 10px; width: 20%}
+    .bordered:hover{background: rgba(0,0,0,0.2)}
+
+    .form{width: 60%; position: absolute; border-radius: 15px; left: 30%; text-align: center; background: rgba(52, 113, 235, 1)}
+    .form button{width: max-content; font-size: 120%; margin-top: 10px  }
+</style>
+<script>
+    function add()
+    {
+        var line = '<input id="link" name="link" type="text" placeholder="id" required/><br>';
+        document.getElementsByTagName('form')[0].innerHTML = document.getElementsByTagName('form')[0].innerHTML + line;
+    }
+</script>
+</html>
